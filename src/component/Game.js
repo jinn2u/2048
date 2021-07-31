@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import times from 'lodash/times'
 import { MAX_POS } from '../constant'
 import { getInitialTileList } from '../util/tile'
+import useMoveTile from '../hook/useMoveTile'
 
 export default function Game() {
   const [tileList, setTileList] = useState(getInitialTileList)
+  useMoveTile()
   return (
     <div className="game-container">
       <div className="grid-container">
