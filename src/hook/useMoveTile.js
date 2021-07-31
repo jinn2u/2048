@@ -1,13 +1,15 @@
-import { endsWith } from "lodash"
 import  { useEffect } from "react"
 import { addKeyObserver, removeKeyObserver } from "../util/keyboard"
+import { makeTile, moveTile } from "../util/tile"
 
 export default function useMoveTile({tileList, setTileList}) {
   function moveAndAdd({x,y}) {
     const newTileList = moveTile({tileList, x, y})
     const newTile = makeTile(newTileList)
+    newTile.isNew = true
     newTileList.push(newTile)
     setTileList(newTileList)
+  }
   function moveUp(){
     moveAndAdd({x: 0, y: -1})
   }
