@@ -15,9 +15,9 @@ function checkCollision(tileList, tile) {
 }
 let currentId = 0
 export function makeTile(tileList) {
-  let tile;
-  while(!tile || checkCollision(tileList, tile)) {
-    tile = {
+  let newTile;
+  while(!newTile || (tileList && checkCollision(tileList, newTile))) {
+    newTile = {
       id: currentId++,
       x: getRandomInteger(1, MAX_POS),
       y: getRandomInteger(1, MAX_POS),
@@ -26,7 +26,7 @@ export function makeTile(tileList) {
       isNew: undefined
     }
   }
-  return tile
+  return newTile
 }
 export function moveTile({ tileList, x, y }) {
   assert(x === 0 || y === 0, '');
